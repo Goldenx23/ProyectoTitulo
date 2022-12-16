@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenedor de Usuarios</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Iconos de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <div class="h3">Mantenedor de Usuarios</div>
+        <div class="row">
+            <div class="col">
+                <form action="/addUsuario/" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+                        <div class="col-2 mb-3">
+                            <label for="nombre_usuario" class="form-label">Nombre de Usuario</label>
+                            <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control">
+                        </div>
+                        <div class="col-3 mb-3">
+                            <label for="contraseña" class="form-label">Contraseña</label>
+                            <input type="password" name="contraseña" id="contraseña" class="form-control">
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="text" name="correo" id="correo" class="form-control" placeholder="ingrese su correo">
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="encargado" class="form-label">Encargado</label>
+                            <select name="encargado" id="encargado" class="form-select">
+                                {% for e in encargados %} 
+                                    {% if usuario.encargado_id == e.id %}
+                                        <option selected value="{{ e.id }}">{{ e.nombre }}</option>
+                                    {% else %} 
+                                        <option value="{{ e.id }}">{{ e.nombre }}</option>
+                                    {% endif %}                                
+                                {% endfor %}
+                            </select>
+                            <div class="col-4">
+                                <div class="col mb-3">
+                                    <img src="{% static 'images/' %}usuario.png" alt="imagen por defecto de un empleado" class="img-fluid">
+                                    <label for="imagen" class="form-label">Fotografía de usuario</label>
+                                    <input type="file" name="imagen" id="imagen" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="submit" value="Registrar Usuario" class="btn btn-success">
+                        </div>
+                    </div>
+                </form>
+                <form action="/buscarUsuario/" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="buscar" name="buscar" />
+                        <input type="submit" class="btn btn-outline-primary">
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="h3">Listado de Usuarios</div>
+            <div class="col">
+                <table class="table table-striped table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Código</th>
+                            <th>Nombre de Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Correo</th>
+                            <th>Fotografía</th>
+                            <th>Encargado</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- esto lo cargaremos con la data -->
+                        {% for u in usuarios %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.nombre_usuario }}</td>
+                            <td>{{ u.contraseña }}</td>                           
+                            <td>{{ u.correo }}</td>
+                            <td>
+                                {% if u.imagen %}
+                                <img src="{{ u.imagen.url }}" alt="foto del usuario {{ u.id }}" width="50px" height="auto">
+                                {% endif %}
+                            </td>
+                            <td>{{ u.encargado }}</td>
+                            <td>
+                                <a href="/loginUsuario/modificarEncargado/{{ u.id }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
+                                <a href="/loginUsuario/eliminarUsuario/{{ u.id }}"class="btn btn-danger btn-sm"><i class="bi bi-trash3"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <a href="../" class="btn btn-primary"><i class="bi bi-house-heart-fill"></i> Volver al Login</a>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

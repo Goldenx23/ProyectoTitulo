@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Administracion de solicitudes</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!--JQUERY-->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	<!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script 
+		src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script 
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	
+	<!-- Los iconos tipo Solid de Fontawesome-->
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+	
+	<!-- Nuestro css-->
+	<link rel="stylesheet" type="text/css" href="/static/css/user-form.css"
+		th:href="@{/css/user-form.css}">
+
+</head>
+<body>
+	<div class="table-responsive">
+        <table id="userList" class="table table-bordered table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Deporte</th>
+                    <th scope="col">Alumno</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sol in solicitudes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ sol.estado }}</td>
+                    <td>{{ sol.fecha_solicitud }}</td>
+                    <td>{{ sol.deporte }}</td>
+                    <td>{{ sol.alumno }}</td>
+
+                    <td>
+                        <a href="../aceptarSolicitud/{{ sol.id }}"><i
+                            class="fa-solid fa-person-circle-check"></i></a>
+                        <a href="../rechazarSolicitud/{{ sol.id }}"><i
+                            class="fas fa-user-times"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

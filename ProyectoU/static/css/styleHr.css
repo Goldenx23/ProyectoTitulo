@@ -1,0 +1,39 @@
+table th{
+    width: 10em;
+    padding: 10px;
+    height: 5px;
+    border: 2px solid black;
+    
+}
+table td{
+    border: 1px solid black;
+    padding: 10px;
+}
+table{
+    border-collapse: collapse;
+}
+input[type=button]{
+    margin-top: 10px;
+    border: 1px solid red;
+    color: white;
+    font-family: "Arial";
+    font-size: 1em;
+    }
+
+div.main{
+    padding:10px 50px 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family:Arial;
+    float: left;
+    margin-top: 10px;
+    background-color: rgb(255, 255, 255);
+}
+table tr:hover{
+    background: gray;
+    color: #fff;
+}
+table td:hover{
+    background: aquamarine;
+    color: aquamarine;
+}

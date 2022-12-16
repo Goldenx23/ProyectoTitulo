@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Formulario</title>
+  <link rel="stylesheet" href="/static/css/form.css">
+</head>
+<body>
+  <div class="signupFrm">
+    <div class =main>
+      <form action="/agregarSolicitud/" method="POST" id="form_id" >
+        {% csrf_token %}
+        <h1 class="title">Formulario solicitud</h1>
+          <img src="/static/images/logo.jpg" width="100" height="100">
+
+        <div class="inputContainer">
+          <input type="datetime-local" id="fecha_solicitud" name="fecha_solicitud" class="input" placeholder="a">
+          <label for="" class="label">Dia y hora de uso</label>
+        </div>
+
+        <div class="inputContainer">
+          Deporte:<br>
+          <select class= "" id= "deporte" name="deporte" >
+              <option value="futbol">Futbol</option>
+              <option value="basquetbol">Basquetbol</option>
+              <option value="voleybol">Voleybol</option>
+          </select></br>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">He leído el formulario de covid</label>
+        </div>
+        <input type="submit" class="submitBtn" value="Enviar formulario">
+      </form>
+      <div>
+        <br>
+            <a href= "/indexForm/"><input class="btn btn-primary" type="submit" value="Volver"></a>
+        </br>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
