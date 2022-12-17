@@ -9,30 +9,31 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- Iconos de Bootstrap -->
+    <link rel="stylesheet" href="/static/css/stylee.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
     <div class="container">
-        <div class="h3">Mantenedor de Usuarios</div>
+        <div class="h3" style="color: white;">Mantenedor de Usuarios</div>
         <div class="row">
             <div class="col">
                 <form action="/addUsuario/" enctype="multipart/form-data" method="POST">
                     {% csrf_token %}
                     <div class="row mt-5">
                         <div class="col-2 mb-3">
-                            <label for="nombre_usuario" class="form-label">Nombre de Usuario</label>
-                            <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control">
+                            <label for="nombre_usuario" class="form-label" style="color: white;">Nombre de Usuario</label required>
+                            <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-control" placeholder="Ingrese usuario" required>
                         </div>
                         <div class="col-3 mb-3">
-                            <label for="contraseña" class="form-label">Contraseña</label>
-                            <input type="password" name="contraseña" id="contraseña" class="form-control">
+                            <label for="contraseña" class="form-label"  style="color: white;">Contraseña</label required>
+                            <input type="password" name="contraseña" id="contraseña" class="form-control" placeholder="Ingrese una contraseña">
                         </div>
                         <div class="col-4 mb-3">
-                            <label for="correo" class="form-label">Correo</label>
-                            <input type="text" name="correo" id="correo" class="form-control" placeholder="ingrese su correo">
+                            <label for="correo" class="form-label" style="color: white;">Correo</label required>
+                            <input type="text" name="correo" id="correo" class="form-control" placeholder="ingrese su correo" >
                         </div>
                         <div class="col-4 mb-3">
-                            <label for="encargado" class="form-label">Encargado</label>
+                            <label for="encargado" class="form-label" style="color: white;">Encargado</label required>
                             <select name="encargado" id="encargado" class="form-select">
                                 {% for e in encargados %} 
                                     {% if usuario.encargado_id == e.id %}
@@ -42,10 +43,10 @@
                                     {% endif %}                                
                                 {% endfor %}
                             </select>
-                            <div class="col-4">
-                                <div class="col mb-3">
+                            <div class="col-11">
+                                <div class="col-6">
                                     <img src="{% static 'images/' %}usuario.png" alt="imagen por defecto de un empleado" class="img-fluid">
-                                    <label for="imagen" class="form-label">Fotografía de usuario</label>
+                                    <label for="imagen" class="form-label"  style="color: white;">Fotografía de usuario</label>
                                     <input type="file" name="imagen" id="imagen" class="form-control form-control-sm">
                                 </div>
                             </div>
@@ -54,22 +55,22 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input type="submit" value="Registrar Usuario" class="btn btn-success">
+                            <input type="submit" value="Registrar Usuario"  class="btn btn-dark "  style="margin-top: 20px ;border-color:black ; border-width: 2px; color: white; width: 250px; "">
                         </div>
                     </div>
                 </form>
                 <form action="/buscarUsuario/" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="buscar" name="buscar" />
-                        <input type="submit" class="btn btn-outline-primary">
+                        <input type="search" class="form-control rounded" style="margin-top:10px" placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" id="buscar" name="buscar" />
+                        <input type="submit"input  class="btn btn-dark "  style="margin-top: 20px ;border-color:black ; border-width: 2px; color: white; width: 250px; " style="margin-top:10px" value="Buscar">
                 </form>
             </div>
         </div>
 
         <div class="row mt-5">
-            <div class="h3">Listado de Usuarios</div>
+            <div class="h3" style="color: white;">Listado de Usuarios</div>
             <div class="col">
-                <table class="table table-striped table-hover table-dark">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -109,7 +110,7 @@
         </div>
         <div class="row mt-5">
             <div class="col">
-                <a href="../" class="btn btn-primary"><i class="bi bi-house-heart-fill"></i> Volver al Login</a>
+                <a href="/index" input type="button" class="btn btn-dark "  style="margin-top: 20px ;border-color:black ; border-width: 2px; color: white; width: 250px; ""><i class="bi bi-house-heart-fill"></i> Volver al Home</a>
             </div>
         </div>
     </div>

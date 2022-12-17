@@ -10,56 +10,57 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/css/stylee.css">
     <!-- Iconos de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
-
 <body>
     <div class="container">
-        <div class="h3">Mantenedor de Alumnos</div>
+        <img src="/static/images/inacap.png"  style="color: white;"  class="h3" width="100px">
+        <h3 style="color: white;">Mantenedor De Alumnos</h3>
         <div class="row">
             <div class="col">
                 <form action="/addAlumno/" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-8" style="margin-top: 10px;">
                             <!------------------------------------------------------------------------------------------------>
                             <div class="row mt-5">
                                 <div class="col-2 mb-3">
-                                    <label for="run" class="form-label">rut</label>
-                                    <input type="text" name="rut" id="rut" class="form-control">
+                                    <label for="run" class="form-label" style="color: white;">Rut</label>
+                                    <input type="text" name="rut" id="rut" class="form-control" placeholder="Ingrese su rut">
                                 </div>
                                 <div class="col-3 mb-4">
-                                    <label for="nombre" class="form-label">Nombre</label>
-                                    <input type="text" name="nombre" id="nombre" class="form-control">
+                                    <label for="nombre" class="form-label" style="color: white;">Nombre</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingrese su nombre">
                                 </div>
                                 <div class="col-4 mb-4">
-                                    <label for="apellidos" class="form-label">Apellidos</label>
+                                    <label for="apellidos" class="form-label" style="color: white;">Apellidos</label>
                                     <input type="text" name="apellidos" id="apellidos" class="form-control"
                                         placeholder="ingrese su apellido">
                                 </div>
                                 <div class="col-4 mb-3">
-                                    <label for="correo" class="form-label">Correo</label>
-                                    <input type="text" name="correo" id="correo" class="form-control">
+                                    <label for="correo" class="form-label"style="color: white;">Correo</label>
+                                    <input type="text" name="correo" id="correo" class="form-control" placeholder="Ingrese su correo">
                                 </div>
                                 <div class="col-4 mb-3">
-                                    <label for="carrera" class="form-label">Carrera</label>
-                                    <select name="carrera" id="carrera" class="form-select">
+                                    <label for="carrera" class="form-label"style="color: white;">Carrera</label>
+                                    <select name="carrera" id="carrera" class="form-select"><br>
                                         {% for c in carreras %}
                                         <option value="{{ c.carrera_id }}">{{ c.nombre }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
-                                <div class="col-4">
-                                    <div class="col mb-3">
+                                <div class="col-10">
+                                    <div class="col-4">
                                         <img src="{% static 'images/' %}usuario.png" alt="imagen por defecto de un empleado" class="img-fluid">
-                                        <label for="imagen" class="form-label">Fotografía de usuario</label>
+                                        <label for="imagen" class="form-label" style="color: white;">Fotografía de usuario</label>
                                         <input type="file" name="imagen" id="imagen" class="form-control form-control-sm">
                                     </div>
                                 </div>
                                 <div class="col-4 mb-3">
-                                    <label for="contraseña" class="form-label">Contraseña</label>
-                                    <input type="password" name="contraseña" id="contraseña" class="form-control">
+                                    <label for="contraseña" class="form-label"style="color: white;">Contraseña</label>
+                                    <input type="password" name="contraseña" id="contraseña" class="form-control" placeholder="Ingrese su contraseña">
                                 </div>
                             </div>
                         </div>
@@ -70,7 +71,7 @@
                     <!------------------------------------------------------------------------------------------------>
                     <div class="row">
                         <div class="col">
-                            <input type="submit" value="Registrar Alumno" class="btn btn-success">
+                            <input type="submit" value="Registrar Alumno" input type="button" class="btn btn-dark "  style="margin-top: 0px ;border-color:black ; border-width: 2px; color: white; width: 250px; "" style="margin-top: 10px;">
                         </div>
                     </div>
                     <!------------------------------------------------------------------------------------------------>
@@ -78,16 +79,16 @@
                 </form>
                 <form action="/buscarAlumno/" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" id="buscar" name="buscar" />
-                        <input type="submit" class="btn btn-outline-primary">
+                        <input type="search" class="form-control rounded" placeholder="Buscar Alumno" aria-label="Search" aria-describedby="search-addon" id="buscar" name="buscar" style="margin-top: 20px;" />
+                        <input type="submit" input type="button" class="btn btn-dark "  style="margin-top: 0px ;border-color:black ; border-width: 2px; color: white; width: 250px; " style="margin-top: 20px;" value="Buscar">
                 </form>
 
         </div>
         <div class="input-group">
         <div class="row mt-5">
-            <div class="h3">Listado de Alumnos</div>
+            <div class="h3" style="color: white;">Listado de Alumnos</div>
             <div class="col">
-                <table class="table table-striped table-hover">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -98,6 +99,7 @@
                             <th>Carrera</th>
                             <th>Contraseña</th>
                             <th>Opciones</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,7 +132,7 @@
         </div>
         <div class="row mt-5">
             <div class="col">
-                <a href="/index" class="btn btn-primary"><i class="bi bi-house-heart-fill"></i> Volver al Home</a>
+                <a href="/index" input type="button" class="btn btn-dark "  style="margin-top: 0px ;border-color:black ; border-width: 2px; color: white; width: 250px; ""><i class="bi bi-house-heart-fill"></i> Volver al Home</a>
             </div>
         </div>
     </div>
