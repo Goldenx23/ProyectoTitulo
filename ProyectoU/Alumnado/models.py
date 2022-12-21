@@ -93,3 +93,9 @@ class Solicitud(models.Model):
         verbose_name = 'Solicitud'
         verbose_name_plural = 'Solicitudes'
         db_table = 'solicitud'
+
+class datosCovid(models.Model):
+    fecha = datetime.now().strftime("%d%m%Y_%H%M%S")
+    sintomas = models.CharField(verbose_name='Sintomas', max_length=100, default="sin síntomas")
+    contactoEstrecho = models.CharField(verbose_name='Contacto estrecho',max_length=2, default="no")
+    alumno = models.ForeignKey(Alumno,on_delete=models.CASCADE)

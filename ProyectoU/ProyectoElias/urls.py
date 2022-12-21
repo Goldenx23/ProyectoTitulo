@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Alumnado.views import index, inicio, AlumnosTodos, eliminar, agregar, editar, editarAlumno, usuariosTodos, eliminarUsuario, agregarUsuario, editarUsuario, editarEncargado
-from Alumnado.views import indexForm, alumnosVista, AlumnoListado, aceptarSolicitud, rechazarSolicitud, alumno_detalle, usuarioVista, listarAlumno, listarUsuario, solicitudAlumno, estadoSolicitud, horarioDae, paginaLogin, paginaLoginDae, agregarSolicitud, LoginAlumnoMantenedor, LoginUsuarioMantenedor
+from Alumnado.views import indexForm, alumnosVista,datoscovid ,formularioCovid,aceptarSolicitud, rechazarSolicitud, alumno_detalle, usuarioVista, listarAlumno, listarUsuario, solicitudAlumno, estadoSolicitud, horarioDae, paginaLogin, paginaLoginDae, agregarSolicitud, LoginAlumnoMantenedor, LoginUsuarioMantenedor
 from Alumnado.views import AlumnoListado, alumno_detalle
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,6 +26,8 @@ urlpatterns = [
     path('login/', paginaLogin, name = 'login'),
     path('loginDae/', paginaLoginDae, name="loginDae"),
     path('indexForm/', indexForm),
+    path('solicitudcovid/', datoscovid),
+    path('formulario/', formularioCovid),
     path('solicitudAlumno/', solicitudAlumno),
     path('agregarSolicitud/',agregarSolicitud),
     path('estadoSolicitud/', estadoSolicitud),
@@ -50,7 +52,7 @@ urlpatterns = [
     path('buscarAlumno/', listarAlumno),
     path('buscarUsuario/', listarUsuario),
     path('aceptarSolicitud/<int:id>', aceptarSolicitud),
-    path('rechazarSolicitud/<int:id>', rechazarSolicitud)
+    path('rechazarSolicitud/<int:id>', rechazarSolicitud),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

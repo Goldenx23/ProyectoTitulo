@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Formulario</title>
+  <link rel="stylesheet" href="/static/css/form.css">
+</head>
+<body>
+  <div class="signupFrm">
+    <div class =main>
+      <form action="/solicitudAlumno/" method="POST" id="form_id" >
+        {% csrf_token %}
+        <h1 class="title">Formulario solicitud</h1>
+          <img src="/static/images/logo.jpg" width="100" height="100">
+
+        <div class="inputContainer">
+          Sintomas:<br>
+          <select class= "" id= "sintomas" name="sintomas" >
+              <option value="fiebre">Fiebre</option>
+              <option value="tos">Tos</option>
+              <option value="disnea o problemas respiratorios">Disnea o problemas respiratorios</option>
+              <option value="dolor toráxico">Dolor toráxico</option>
+              <option value="odinofagia o dolor de garganta al comer o tragar fluidos">Odinofagia o dolor de garganta al comer o tragar fluidos</option>
+              <option value="mialgias o dolores musculares">Mialgias o dolores musculares</option>
+              <option value="Calosfríos">Calosfríos</option>
+              <option value="cefalea">Cefalea</option>
+              <option value="diarrea">Diarrea</option>
+              <option value="pérdida brusca del olfato o anosmia">Pérdida brusca del olfato o anosmia</option>
+              <option value="pérdida brusca del gusto o ageusia">Pérdida brusca del gusto o ageusia</option>
+              <option value="sin síntomas">Sin síntomas</option>
+          </select></br>
+        </div>
+        <div class="inputContainer">
+          Ha sido contacto extrecho?:<br>
+          <select class= "" id= "contactoEstrecho" name="contactoEstrecho" >
+              <option value="si">Si</option>
+              <option value="no">No</option>
+          </select></br>
+        </div>
+        <input type="submit" class="submitBtn" value="Enviar formulario">
+      </form>
+      <div>
+        <br>
+            <a href= "/"><input class="btn btn-primary" type="submit" value="Volver"></a>
+        </br>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

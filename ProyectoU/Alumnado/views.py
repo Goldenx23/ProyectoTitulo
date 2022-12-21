@@ -3,7 +3,7 @@ from .serializers import AlumnoSerializar
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import Alumno, Carrera, Encargado, Usuario, Solicitud
+from .models import Alumno, Carrera, Encargado, Usuario, Solicitud, datosCovid
 from django.contrib import messages
 from django.db.models import Q
 from django.http import JsonResponse
@@ -33,7 +33,15 @@ def estadoSolicitud(request):
 def solicitudAlumno(request):
     return render(request, 'solicitudAlumno.html')
 
+def formularioCovid(request):
+    return render(request, 'formularioc19.html')
 
+def datoscovid(request):
+    sintomas = request.POST.get('sintomas', "sin síntomas")
+    contactoEstrecho = request.POST.get('contactoEstrecho', "no")
+    print(alumnoid['id'])
+    datoscovid = datosCovid.objects.create(sintomas=sintomas,contactoEstrecho=contactoEstrecho,alumno_id=alumnoid['id'])
+    return render(request, '/solicitudcovid/')
 
 def paginaLogin(request):
     if request.method == 'POST':
